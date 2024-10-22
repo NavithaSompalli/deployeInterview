@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login'; // Importing LoginPage component
+import InterviewRoute from './components/InterviewRoute'; // Importing InterviewRoute component
+import ProtectedRoute from './components/ProtectedRoute';
+
+import UploadResume from './components/UploadResume';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Routes>
+          {/* Default route to render LoginPage */}
+          <Route path="/" element={<Login />} />
+          
+          {/* Route to render InterviewRoute component */}
+          <Route path="/interview" element={<InterviewRoute />} /> 
+          <Route path="/upload" element={<UploadResume/>}/>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
